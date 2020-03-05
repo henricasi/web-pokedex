@@ -43,7 +43,7 @@
               <p class="detail-title">Generation</p>
             </div>
             <div class="col-sm-8">
-              <p>{{previousData.generation}}</p>
+              <p class="detail-content">{{previousData.generation}}</p>
             </div>
           </div>
           <div class="row info-group">
@@ -51,7 +51,7 @@
               <p class="detail-title">Types</p>  
             </div>
             <div class="col-sm-8 d-flex justify-content-around">
-              <p v-for="(type, idx) in sortTypes" :key="idx" class="pokemon-type" v-bind:style="{ backgroundColor: getTypeColor(type.type.name)}">{{normalizeName(type.type.name)}}</p>
+              <p v-for="(type, idx) in sortTypes" :key="idx" class="pokemon-type detail-content" v-bind:style="{ backgroundColor: getTypeColor(type.type.name)}">{{normalizeName(type.type.name)}}</p>
             </div>
           </div>
 
@@ -203,6 +203,10 @@ export default {
     margin-bottom: 0;
   }
 
+  .detail-content {
+    margin-bottom: 0;
+  }
+
   .details-sprites {
     background-color: rgb(214, 214, 214);
     margin: 0 0.5em;
@@ -245,6 +249,10 @@ export default {
       flex-direction: row;
       align-items: center;
       justify-content: space-around;
+    }
+
+    .detail-content {
+      margin-bottom: 1rem;
     }
   }
 
@@ -290,6 +298,10 @@ export default {
 
     .pokemon-type {
       width: 5em;
+    }
+
+    .table {
+      font-size: 1em;
     }
   }
 

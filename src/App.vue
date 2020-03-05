@@ -5,7 +5,9 @@
         <img src="./assets/pokeball.png" alt="Pokéball" class="pokeball">
         <h1>Web PokéDex</h1>
       </header>
-      <router-view v-bind:listData="fullList" v-bind:pokeAPI="pokeAPI"></router-view>
+      <template v-if="loaded">
+        <router-view v-bind:listData="fullList" v-bind:pokeAPI="pokeAPI"></router-view>
+      </template>
     </div>
   </div>
 </template>
@@ -20,6 +22,7 @@ export default {
     return {
       fullList: [],
       pokeAPI: {},
+      loaded: false
     }
   },
   components: {
@@ -93,7 +96,7 @@ export default {
           pokemon.id = uuidv4();
         })
       this.fullList = results;
-      this.loading = false;
+      this.loaded = true;
       })
       .catch(err => console.log(err));
   }

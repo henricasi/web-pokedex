@@ -1,8 +1,13 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import router from './router/index';
+
+import App from './App';
+// import PokemonList from './components/PokemonList'
+// import PokemonDetails from './components/PokemonDetails';
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
+  router,
+  render: h => h(App)
 }).$mount('#app')

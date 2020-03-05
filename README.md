@@ -1,24 +1,24 @@
-# pokemon-page
+# Web PokéDex
 
-## Project setup
-```
-npm install
-```
+Application for viewing and finding Pokémon and their stats (up to Generation VII).
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Getting Started
 
-### Compiles and minifies for production
-```
-npm run build
-```
+You can access the deployed application on [this link](https://web-pokedex.herokuapp.com/). Alternatively, fork and clone this repo and run `npm start` to run the app locally.
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Built With
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+-   HTML5 + CSS3
+    
+-   [PokéAPI](https://pokeapi.co/)
+    
+-   Vue.js
+    
+-   Fuse.js (fuzzy search)
+    
+-   [Vue Spinner](https://github.com/greyby/vue-spinner)
+    
+
+## Contributing
+
+Feel free to contribute in any way you want! Just fork this project, create a new branch for your features and do a pull request after commiting your changes.

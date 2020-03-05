@@ -31,10 +31,6 @@
         </div>
       </div>
     </div>
-    <div v-if="loading" class="loader d-flex flex-column justify-content-center">
-      <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
-    </div>
-    
     <div class="pokemon-list d-flex flex-row flex-wrap justify-content-center">
       <PokemonCard v-for="pokemon in searchPokemon()" :key="pokemon.id" :singlePokemon="pokemon"/>
     </div>
@@ -43,7 +39,6 @@
 
 <script>
 import PokemonCard from './PokemonCard';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import Fuse from 'fuse.js';
 
 export default {
@@ -53,7 +48,6 @@ export default {
   },
   components: {
     PokemonCard,
-    PulseLoader
   },
   data() {
     return {
@@ -62,11 +56,6 @@ export default {
       selected: "All",
       picked: "number",
       loading: true,
-      color: '#cc181e',
-      color1: '#5bc0de',
-      size: '10px',
-      margin: '2px',
-      radius: '2px'
     }
   },
   methods: {
@@ -91,7 +80,8 @@ export default {
           minMatchCharLength: 1,
           keys: [
             "name",
-            "displayName"
+            "displayName",
+            "number"
           ]
         };
         let fuse = new Fuse(sortedList, fuseConfig);
@@ -103,22 +93,16 @@ export default {
   mounted() {
     if (this.listData.length !== 0) {
       this.loading = false;
-      console.log('just fetched data');
     }
 
     if (this.copiedList.length === 0 && this.listData.length !== 0) {
       this.copiedList = [...this.listData];
-      console.log('just copied');
     }
   }
 }
 </script>
 
 <style scoped>
-  .loader {
-    height: 20em;
-  }
-
   .list-container {
     border: 4px solid rgb(190, 190, 190);
     padding: 0.5em 0;
@@ -130,6 +114,7 @@ export default {
 
   .search-bar-container {
     margin: 0 auto;
+    margin-bottom: 0.75em;
     width: 86%;
   }
 

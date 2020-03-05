@@ -1,10 +1,13 @@
 <template>
   <div class="container-fluid p-0">
     <div class="pokedex container">
-      <header>
+      <header v-if="loaded">
         <img src="./assets/pokeball.png" alt="Pokéball" class="pokeball">
         <h1>Web PokéDex</h1>
       </header>
+      <div v-if="!loaded" class="loader d-flex flex-column justify-content-center">
+        <pulse-loader :loaded="!loaded" :color="color" :size="size"></pulse-loader>
+      </div>
       <template v-if="loaded">
         <router-view v-bind:listData="fullList" v-bind:pokeAPI="pokeAPI"></router-view>
       </template>
@@ -14,6 +17,7 @@
 
 <script>
 import axios from 'axios';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import { v4 as uuidv4 } from 'uuid';
 
 export default {
@@ -22,10 +26,16 @@ export default {
     return {
       fullList: [],
       pokeAPI: {},
-      loaded: false
+      loaded: false,
+      color: '#E7C60A',
+      color1: '#5bc0de',
+      size: '10px',
+      margin: '2px',
+      radius: '2px'
     }
   },
   components: {
+    PulseLoader
   },
   methods: {
     normalizeName(name) {
@@ -104,7 +114,6 @@ export default {
 </script>
 
 <style>
-
   body {
     font-family: 'Pokemon Fire Red', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -114,6 +123,10 @@ export default {
     font-size: 24px;
     padding: 1em;
     background-color: rgb(250, 250, 250);
+  }
+
+  .loader {
+    height: 80vh;
   }
 
   .pokeball {
@@ -138,6 +151,7 @@ export default {
     background-color: rgb(192, 45, 45);
     border-radius: 1em;
     padding-bottom: 2.5em;
+    min-height: 90vh;
   }
 
 </style>

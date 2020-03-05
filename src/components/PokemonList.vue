@@ -58,7 +58,7 @@ export default {
     border: 4px solid rgb(190, 190, 190);
     padding: 0.5em 0;
     background-color: #DEDEDE;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
   }
 
@@ -78,4 +78,15 @@ export default {
     font-size: 1em;
   }
   
+  @media (min-width: 576px) {
+    .list-container {
+      width: 80%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .list-container {
+      width: 80%;
+    }
+  }
 </style>

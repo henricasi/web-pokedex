@@ -97,8 +97,6 @@ export default {
 }
 </script>
 
-//TODO definir font-family
-
 <style>
 
   body {

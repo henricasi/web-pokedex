@@ -39,12 +39,21 @@ export default {
     color: black;
   }
 
+  p {
+    margin: 0 0.5em;
+  }
+
   .pokemon-card {
-    padding: 0.5rem 2rem;
-    margin: 1.5rem;
+    margin: 0.8rem 1.5rem;
+    height: 5rem;
     border: 2px solid;
     border-radius: 7px;
     background-color: white;
+    width: 90%;
+  }
+
+  .card-content {
+    flex-direction: row;
   }
 
   .pokemon-image {
@@ -52,35 +61,41 @@ export default {
   }
 
   .pokemon-number {
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 
   .pokemon-name {
-    font-size: 1.2em;
+    font-size: 0.9em;
   }
 
   @media (min-width: 576px) {
-    .card-content {
-      flex-direction: row;
-    }
-
     .pokemon-card {
-      height: 7rem;
+      margin: 1.5rem;
+      height: 5rem;
       width: 80%;
       margin: 0.5em;
+      padding: 0.5rem 1rem;
+    }
+    
+    .pokemon-number {
+      font-size: 0.8em;
     }
 
-    p {
-      margin: 0 0.5em;
+    .pokemon-name {
+      font-size: 1em;
     }
   }
 
-  /* Medium devices (tablets, 768px and up) */
   @media (min-width: 768px) {
     .pokemon-card {
       margin: 0.8rem;
       height: 12rem;
       width: 14rem;
+      padding: 0.5rem 2rem;
+    }
+
+    .pokemon-name {
+      font-size: 1.2em;
     }
 
     .card-content {
@@ -88,7 +103,6 @@ export default {
     }
   }
 
-  /* Large devices (desktops, 992px and up) */
   @media (min-width: 992px) {
     .pokemon-card {
       margin: 1.5rem;

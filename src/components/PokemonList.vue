@@ -1,11 +1,13 @@
 <template>
   <div class="list-container">
-    <div class="input-group search-bar-container">
+    <div v-if="!loading" class="input-group search-bar-container">
       <input type="text" class="form-control search-bar" v-model="searchStr" placeholder="Search for a Pokémon..." aria-label="Search for a Pokémon" aria-describedby="basic-addon2">
+    </div>
+    <div v-if="loading" class="loader d-flex flex-column justify-content-center">
+      <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
     </div>
     <!-- TODO add filters, sorting (abc, original) -->
     <div class="pokemon-list d-flex flex-row flex-wrap justify-content-center">
-
       <PokemonCard v-for="pokemon in searchPokemon" :key="pokemon.id" :singlePokemon="pokemon"/>
     </div>
   </div>
@@ -13,6 +15,7 @@
 
 <script>
 import PokemonCard from './PokemonCard';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import Fuse from 'fuse.js';
 
 export default {
@@ -21,11 +24,18 @@ export default {
     listData: Array,
   },
   components: {
-    PokemonCard
+    PokemonCard,
+    PulseLoader
   },
   data() {
     return {
       searchStr: "",
+      loading: true,
+      color: '#cc181e',
+      color1: '#5bc0de',
+      size: '10px',
+      margin: '2px',
+      radius: '2px'
     }
   },
   computed: {
@@ -50,15 +60,30 @@ export default {
       return fuse.search(this.searchStr);
     }
   },
+  created() {
+    if (this.listData.length !== 0) {
+      this.loading = false;
+    }
+  },
+  updated() {
+    if (this.listData.length !== 0) {
+      this.loading = false;
+    }
+  }
 }
 </script>
 
 <style scoped>
+  .loader {
+    height: 20em;
+  }
+
   .list-container {
     border: 4px solid rgb(190, 190, 190);
     padding: 0.5em 0;
     background-color: #DEDEDE;
     width: 90%;
+    min-height: 20em;
     margin: 0 auto;
   }
 

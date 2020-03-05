@@ -16,6 +16,14 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      fullList: [],
+      pokeAPI: {},
+    }
+  },
+  components: {
+  },
   methods: {
     normalizeName(name) {
       let normalizedName;
@@ -71,12 +79,6 @@ export default {
       }
     }
   },
-  data() {
-    return {
-      fullList: [],
-      pokeAPI: {}
-    }
-  },
   created() {
     this.pokeAPI = axios.create({baseURL: 'http://pokeapi.co/api/v2/'});
     let self = this;
@@ -91,6 +93,7 @@ export default {
           pokemon.id = uuidv4();
         })
       this.fullList = results;
+      this.loading = false;
       })
       .catch(err => console.log(err));
   }
